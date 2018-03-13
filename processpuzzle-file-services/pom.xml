@@ -1,0 +1,78 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <artifactId>processpuzzle-file-services</artifactId>
+  <name>ProcessPuzzle File - Services</name>
+  <packaging>jar</packaging>
+
+  <parent>
+    <groupId>com.processpuzzle</groupId>
+    <artifactId>processpuzzle-file</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+
+  <properties>
+    <ui.distribution.folder>${project.basedir}/../processpuzzle-file-ui/dist</ui.distribution.folder>
+    <ui.target.folder>${project.basedir}/src/main/resources/public</ui.target.folder>
+  </properties>
+
+  <dependencies>
+    <!-- module dependencies -->
+    <dependency>
+      <groupId>com.processpuzzle</groupId>
+      <artifactId>processpuzzle-file-ui</artifactId>
+      <version>0.0.1-SNAPSHOT</version>
+      <scope>compile</scope>
+      <type>pom</type>
+    </dependency>
+    
+    <!-- Spring Boot dependencies -->
+  </dependencies>
+
+  <build>
+    <finalName>processpuzzle-file</finalName>
+    <plugins>
+      <plugin>
+        <artifactId>maven-clean-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>clean-ui-distribution</id>
+            <phase>clean</phase>
+            <goals>
+              <goal>clean</goal>
+            </goals>
+            <configuration>
+              <filesets>
+                <fileset>
+                  <directory>${ui.target.folder}</directory>
+                </fileset>
+              </filesets>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
+      <plugin>
+        <artifactId>maven-resources-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>copy-ui-distribution</id>
+            <phase>initialize</phase>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>${ui.target.folder}</outputDirectory>
+              <resources>
+                <resource>
+                  <directory>${ui.distribution.folder}</directory>
+                  <filtering>true</filtering>
+                </resource>
+              </resources>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+
+</project>
