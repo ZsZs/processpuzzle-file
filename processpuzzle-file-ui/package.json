@@ -1,0 +1,88 @@
+{
+  "name": "processpuzzle-file-ui",
+  "version": "0.1.0",
+  "description": "Generic file management services.",
+  "scripts": {
+    "build": "gulp build",
+    "build-test": "tsc -p src/tsconfig.spec.json",
+    "build-test:watch": "tsc -p src/tsconfig.spec.json -w",
+    "build:watch": "gulp",
+    "docs": "npm run docs:build",
+    "docs:build": "compodoc -p tsconfig.json -n processpuzzle-file-ui -d docs --hideGenerator",
+    "docs:serve": "npm run docs:build -- -s",
+    "docs:watch": "npm run docs:build -- -s -w",
+    "lint": "tslint --project tsconfig.json src/**/*.ts",
+    "lite": "lite-server",
+    "playground:build": "tsc -p playground -w",
+    "playground": "concurrently \"npm run build:watch\" \"npm run playground:build\" \"npm run lite\"",
+    "pretest": "npm run build-test",
+    "pretest:once": "npm run build-test",
+    "test": "concurrently \"npm run build-test:watch\" \"karma start karma.conf.js\"",
+    "coverage": "karma start karma-coverage.conf.js --single-run",
+    "test:once": "karma start karma.conf.js --single-run"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ZsZs/processpuzzle-file.git"
+  },
+  "author": {
+    "name": "Zsolt Zsuffa",
+    "email": "zsolt.zsuffa@gmail.com"
+  },
+  "keywords": [
+    "angular"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ZsZs/processpuzzle-file.git/issues"
+  },
+  "devDependencies": {
+    "@angular/cli": "^1.7.3",
+    "@angular/common": "^5.0.0",
+    "@angular/compiler": "^5.0.0",
+    "@angular/compiler-cli": "^5.0.0",
+    "@angular/core": "^5.0.0",
+    "@angular/platform-browser": "^5.0.0",
+    "@angular/platform-browser-dynamic": "^5.0.0",
+    "@compodoc/compodoc": "^1.0.9",
+    "@types/jasmine": "2.8.6",
+    "@types/karma": "^1.7.0",
+    "@types/node": "~9.4.7",
+    "angular-in-memory-web-api": "^0.5.4",
+    "codelyzer": "~4.2.1",
+    "concurrently": "^3.5.1",
+    "core-js": "^2.4.1",
+    "fs-extra": "^5.0.0",
+    "gulp": "^3.9.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-rollup": "^2.15.0",
+    "jasmine": "^2.99.0",
+    "jasmine-core": "^2.99.0",
+    "jasmine-expect": "^3.7.1",
+    "jasmine-spec-reporter": "~4.2.1",
+    "karma": "~2.0.0",
+    "karma-chrome-launcher": "~2.2.0",
+    "karma-cli": "~1.0.1",
+    "karma-coverage": "^1.1.1",
+    "karma-coverage-istanbul-reporter": "^1.2.1",
+    "karma-jasmine": "~1.1.0",
+    "karma-jasmine-html-reporter": "^0.2.2",
+    "karma-remap-coverage": "^0.1.4",
+    "lite-server": "^2.3.0",
+    "node-sass": "^4.8.2",
+    "node-sass-tilde-importer": "^1.0.0",
+    "node-watch": "^0.5.2",
+    "protractor": "~5.3.0",
+    "rollup": "^0.56.5",
+    "run-sequence": "^2.2.1",
+    "rxjs": "^5.5.7",
+    "systemjs": "^0.21.0",
+    "ts-node": "~5.0.1",
+    "tslint": "~5.9.1",
+    "typescript": "~2.7.2",
+    "zone.js": "^0.8.14"
+  },
+  "engines": {
+    "node": ">=6.0.0"
+  }
+}
