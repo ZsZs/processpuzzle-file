@@ -81,8 +81,7 @@ gulp.task('rollup:fesm', function () {
         '@angular/common'
       ],
 
-      // Format of generated bundle
-      // See "format" in https://rollupjs.org/#core-functionality
+      // Format of generated bundle. See "format" in https://rollupjs.org/#core-functionality
       format: 'es'
     }))
     .pipe(gulp.dest(distFolder));
