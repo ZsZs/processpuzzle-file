@@ -51,7 +51,7 @@ import de.computerkomplett.img.server.tool.ToolEntity;
 import de.computerkomplett.img.tool.Tool;
 
 @Configuration
-public class ImgServerConfiguration extends WebMvcConfigurerAdapter {
+public class FileServerConfiguration extends WebMvcConfigurerAdapter {
    private static final String SPRING_HATEOAS_OBJECT_MAPPER = "_halObjectMapper";
    @Autowired @Qualifier( SPRING_HATEOAS_OBJECT_MAPPER ) private ObjectMapper springHateoasObjectMapper;
    @Autowired private Jackson2ObjectMapperBuilder springBootObjectMapperBuilder;

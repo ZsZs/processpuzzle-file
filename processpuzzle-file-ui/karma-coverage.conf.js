@@ -10,7 +10,8 @@ module.exports = function (config) {
             require('karma-chrome-launcher'),
             require('karma-jasmine-html-reporter'),
             require('karma-coverage'),
-            require('karma-remap-coverage')
+            require('karma-remap-coverage'),
+            require('karma-coverage-istanbul-reporter')
         ],
         preprocessors: {
             './src/**/!(*spec).js': 'coverage'
@@ -22,23 +23,22 @@ module.exports = function (config) {
             type: 'in-memory',
             check: {
                 global: {
-                    statements: 50,
-                    branches: 50,
-                    functions: 50,
-                    lines: 50
+                    statements: 60,
+                    branches: 60,
+                    functions: 60,
+                    lines: 60
                 },
                 each: {
-                    statements: 50,
-                    branches: 50,
-                    functions: 50,
-                    lines: 50
+                    statements: 60,
+                    branches: 60,
+                    functions: 60,
+                    lines: 60
                 }
             }
         },
 
         remapCoverageReporter: {
             'text-summary': null,
-            'text-lcov': './target/coverage/lcov.info',
             html: './target/coverage/html',
             cobertura: './target/coverage/coverage.xml'
         }

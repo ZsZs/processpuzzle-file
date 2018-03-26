@@ -2,21 +2,21 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {DebugElement} from '@angular/core';
 
-import {SampleComponent} from './sample.component';
+import {FileUploadComponent} from './file-upload.component';
 
-describe('SampleComponent', () => {
-    let comp: SampleComponent;
-    let fixture: ComponentFixture<SampleComponent>;
+describe('FileUploadComponent', () => {
+    let comp: FileUploadComponent;
+    let fixture: ComponentFixture<FileUploadComponent>;
     let de: DebugElement;
     /* tslint:disable-next-line */
     let el: HTMLElement;
 
     beforeEach(() => {
         TestBed.configureTestingModule({
-            declarations: [SampleComponent], // declare the test component
+            declarations: [FileUploadComponent], // declare the test component
         });
 
-        fixture = TestBed.createComponent(SampleComponent);
+        fixture = TestBed.createComponent(FileUploadComponent);
 
         comp = fixture.componentInstance; // BannerComponent test instance
 
@@ -29,6 +29,6 @@ describe('SampleComponent', () => {
 
     it('should have expected <h1> text', () => {
         fixture.detectChanges();
-        expect(el.innerText).toMatch('Sample component' );
+        expect(el.innerText).toMatch('File Upload' );
     });
 });

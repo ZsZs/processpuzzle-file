@@ -47,6 +47,9 @@ module.exports = function (config) {
             'node_modules/zone.js/dist/async-test.js',
             'node_modules/zone.js/dist/fake-async-test.js',
 
+            // tslib.js
+            'node_modules/tslib/tslib.js',
+
             // RxJs
             { pattern: 'node_modules/rxjs/**/*.js', included: false, watched: false },
             { pattern: 'node_modules/rxjs/**/*.js.map', included: false, watched: false },
@@ -85,7 +88,7 @@ module.exports = function (config) {
         reporters: ['progress', 'kjhtml'],
         port: 9876,
         colors: true,
-        logLevel: config.LOG_INFO,
+        logLevel: config.LOG_DEBUG,
         autoWatch: true,
         browsers: ['Chrome'],
         singleRun: false

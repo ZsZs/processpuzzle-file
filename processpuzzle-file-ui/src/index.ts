@@ -1,26 +1,28 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SampleComponent } from './sample.component';
 import { SampleDirective } from './sample.directive';
 import { SamplePipe } from './sample.pipe';
 import { SampleService } from './sample.service';
+import { FileUploadComponent } from './file-upload.component';
+import { HttpClientModule } from '@angular/common/http';
 
-export * from './sample.component';
+export * from './file-upload.component';
 export * from './sample.directive';
 export * from './sample.pipe';
 export * from './sample.service';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+     HttpClientModule
   ],
   declarations: [
-    SampleComponent,
+    FileUploadComponent,
     SampleDirective,
     SamplePipe
   ],
   exports: [
-    SampleComponent,
+    FileUploadComponent,
     SampleDirective,
     SamplePipe
   ]

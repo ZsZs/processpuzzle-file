@@ -1,0 +1,74 @@
+sudo: required
+language: java
+jdk: oraclejdk8
+node_js:
+- 8.7.0
+services:
+- docker
+install: true
+env:
+  local:
+    maven:
+    - repository=$HOME/.m2
+    - CXX=g++-4.8
+addons:
+  apt:
+    sources:
+    - ubuntu-toolchain-r-test
+    packages:
+    - g++-4.8
+  chrome: stable
+  sonarcloud:
+    organization: processpuzzle
+    token:
+      secure: "$SONAR_TOKEN"
+    branches:
+    - development
+    - master
+dist: trusty
+before_install:
+- openssl aes-256-cbc -K $encrypted_412fa073bf64_key -iv $encrypted_412fa073bf64_iv -in codesigning.asc.enc -out codesigning.asc -d
+- mkdir -p $HOME/.scm/ && cp ./git-settings.xml $HOME/.scm/git-settings.xml
+- nvm install node
+- nvm use node
+- npm install -g npm@5.6.0
+- npm --version
+- if [ ${TRAVIS_BRANCH} == development ]; then DEPLOYMENT_ENVIRONMENT=dev; elif [
+  -n ${TRAVIS_TAG} ]; then DEPLOYMENT_ENVIRONMENT=prod; else DEPLOYMENT_ENVIRONMENT=integ;
+  fi; export DEPLOYMENT_ENVIRONMENT;
+
+cache:
+  directories:
+  - "$HOME/.m2"
+  - "$HOME/.sonar/cache"
+  - "./processpuzzle-util-ui/node_modules"
+
+before_script:
+- export DISPLAY=:99.0
+- sh -e /etc/init.d/xvfb start
+- sleep 3
+- npm install -g typescript
+- npm remove -g angular-cli
+- npm uninstall -g @angular/cli
+- npm cache clean --force
+- npm install -g @angular/cli@latest
+- npm install -g @angular/compiler-cli
+- npm install -g tslint
+- ng --version
+- npm install --prefix ./processpuzzle-util-ui
+- npm update --prefix ./processpuzzle-util-ui
+
+script:
+- mvn clean install org.jacoco:jacoco-maven-plugin:prepare-agent sonar:sonar --settings travis-maven-settings.xml
+
+deploy:
+- provider: script
+  skip_cleanup: true
+  script: mvn deploy -Dmaven.test.skip=true --settings travis-maven-settings.xml -B
+  on:
+    branch: development
+- provider: script
+  skip_cleanup: true
+  script: bash ./trigger-travis-compose.sh
+  on:
+    branch: master
