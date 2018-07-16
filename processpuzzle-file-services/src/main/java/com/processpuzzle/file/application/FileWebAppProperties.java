@@ -11,8 +11,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 
-public abstract class ImgWebAppProperties {
-   protected static final Logger logger = LoggerFactory.getLogger( ImgWebAppProperties.class );
+public abstract class FileWebAppProperties {
+   protected static final Logger logger = LoggerFactory.getLogger( FileWebAppProperties.class );
    protected Environment environment;
    protected String contextPath;
    protected String host = "localhost";
@@ -20,7 +20,7 @@ public abstract class ImgWebAppProperties {
    protected String protocol = "http";
    protected int timeout = 1000;
 
-   public ImgWebAppProperties( @Autowired Environment environment ) {
+   public FileWebAppProperties( @Autowired Environment environment ) {
      this.environment = environment;
      contextPath = environment.getProperty( "server.contextPath" );
    }

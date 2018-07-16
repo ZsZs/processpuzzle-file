@@ -22,8 +22,8 @@ import com.google.common.collect.Maps;
 
 @Component
 @ConfigurationProperties( prefix = "img-server" )
-public class ImgServerProperties extends ImgWebAppProperties {
-   private static final Logger logger = LoggerFactory.getLogger( ImgServerProperties.class );
+public class FileServerProperties extends FileWebAppProperties {
+   private static final Logger logger = LoggerFactory.getLogger( FileServerProperties.class );
    private String dateFormatter = "yyyy-MM-dd";
    private String dateTimeFormatter = "yyyy-MM-dd HH:mm:ss";
    private int downloadTokenExpiration = 1;
@@ -31,7 +31,7 @@ public class ImgServerProperties extends ImgWebAppProperties {
    private Map<String, String> users = Maps.newHashMap(); 
    private String zoneOffset = "+02:00";
 
-   public ImgServerProperties( @Autowired Environment environment ) {
+   public FileServerProperties( @Autowired Environment environment ) {
       super( environment );
    }
    

@@ -1,0 +1,10 @@
+<h6>File Upload</h6>
+<input type="file" (change)="onFileSelected( $event )">
+<button class="btn light-green waves-effect" type="button" (click)="onUpload()">Upload</button>
+<section class="control-bar" *ngIf="uploadState | async; let state">
+ <button (click)="uploadTask.pause() "[disabled]="uploadState === 'paused'">Pause</button>
+ <button (click)="uploadTask.resume()" [disabled]="!(uploadState === 'paused' || state === 'running')">Resume</button>
+ <button (click)="uploadTask.cancel()" [disabled]="uploadState === 'running'">Cancel</button>
+</section>
+<a [href]="downloadURL | async">{{ downloadURL | async }}</a>
+<progress max="100" [value]="(uploadProgress | async)"></progress>

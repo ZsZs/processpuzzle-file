@@ -39,17 +39,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 
-import de.computerkomplett.img.contact.Contact;
-import de.computerkomplett.img.document.Document;
-import de.computerkomplett.img.part.Part;
-import de.computerkomplett.img.project.Project;
-import de.computerkomplett.img.server.contact.ContactEntity;
-import de.computerkomplett.img.server.document.DocumentEntity;
-import de.computerkomplett.img.server.part.PartEntity;
-import de.computerkomplett.img.server.project.ProjectEntity;
-import de.computerkomplett.img.server.tool.ToolEntity;
-import de.computerkomplett.img.tool.Tool;
-
 @Configuration
 public class FileServerConfiguration extends WebMvcConfigurerAdapter {
    private static final String SPRING_HATEOAS_OBJECT_MAPPER = "_halObjectMapper";
