@@ -24,10 +24,10 @@ export class FileUploadComponent {
    }
 
    onUpload() {
-      let folderReference = this.afStorage.ref( '/upload/to/this-path/' + this.selectedFile.name );
+      const folderReference = this.afStorage.ref( '/upload/to/this-path/' + this.selectedFile.name );
       this.uploadTask = folderReference.put( this.selectedFile );
       this.uploadProgress = this.uploadTask.percentageChanges();
-      this.uploadState = this.uploadTask.snapshotChanges().pipe( 
+      this.uploadState = this.uploadTask.snapshotChanges().pipe(
          map( s => this.uploadState = s.state ),
          finalize( () => this.downloadURL = folderReference.getDownloadURL() )
       ).subscribe();

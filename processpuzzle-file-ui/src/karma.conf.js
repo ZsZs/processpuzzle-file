@@ -15,6 +15,9 @@ module.exports = function (config) {
     client: {
       clearContext: false // leave Jasmine Spec Runner output visible in browser
     },
+    files: [
+      'https://code.jquery.com/jquery-3.3.1.min.js'
+    ],
     coverageIstanbulReporter: {
       dir: require('path').join(__dirname, '../target/coverage'),
       reports: ['html', 'lcovonly', 'text-summary'],

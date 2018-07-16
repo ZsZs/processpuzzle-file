@@ -5,7 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 // Third party modules
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireStorageModule } from 'angularfire2/storage';
-import { MaterializeModule } from "angular2-materialize";
+import { MaterializeModule } from 'angular2-materialize';
 
 // ProcessPuzzle Components
 import { ProcesspuzzleFileUiLibComponent } from './processpuzzle-file-ui-lib.component';

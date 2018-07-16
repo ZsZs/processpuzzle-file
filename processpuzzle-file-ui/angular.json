@@ -30,7 +30,7 @@
               "node_modules/hammerjs/hammer.js",
               "node_modules/jquery/dist/jquery.min.js",
               "node_modules/materialize-css/dist/js/materialize.js"
-            ],
+            ]
           },
           "configurations": {
             "development": {
@@ -181,7 +181,10 @@
           "options": {
             "main": "projects/processpuzzle-file-ui-lib/src/test.ts",
             "tsConfig": "projects/processpuzzle-file-ui-lib/tsconfig.spec.json",
-            "karmaConfig": "projects/processpuzzle-file-ui-lib/karma.conf.js"
+            "karmaConfig": "projects/processpuzzle-file-ui-lib/karma.conf.js",
+            "codeCoverageExclude": [
+                "projects/processpuzzle-file-ui-lib/src/lib/common-service-module-stub.ts"
+            ]
           },
           "configurations": {
             "unit-test": {

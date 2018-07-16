@@ -1,5 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
+
+import { CommonServiceModuleStub } from './common-service-module-stub';
 
 import { FileUploadComponent } from './file-upload.component';
 import { ProcesspuzzleFileUiLibComponent } from './processpuzzle-file-ui-lib.component';
@@ -11,7 +12,8 @@ describe('ProcesspuzzleFileUiLibComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ FileUploadComponent, ProcesspuzzleFileUiLibComponent ],
-      imports: [HttpClientTestingModule]
+      imports: [CommonServiceModuleStub],
+      providers: []
     })
     .compileComponents();
   }));

@@ -7,14 +7,14 @@ import { MaterializeModule } from 'angular2-materialize';
 
 // ProcessPuzzle components
 import { AppComponent } from './app.component';
-import { ProcesspuzzleFileUiLibModule } from 'processpuzzle-file-ui-lib'
+import { ProcesspuzzleFileUiLibModule } from 'processpuzzle-file-ui-lib';
 
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
-    BrowserModule, 
+    BrowserModule,
     MaterializeModule,
     ProcesspuzzleFileUiLibModule
   ],

@@ -1,32 +1,34 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { AngularFireStorage } from 'angularfire2/storage';
 
-import {FileUploadComponent} from './file-upload.component';
+import { FileUploadComponent } from './file-upload.component';
+import { AngularFireStorageReferenceStub, CommonServiceModuleStub } from './common-service-module-stub';
 
 describe('FileUploadComponent', () => {
     const mockParts = [ new Blob(['you construct a file...'], {type: 'text/plain'}), ' Same way as you do with blob', new Uint16Array([33]) ];
     const mockFile = new File( mockParts, 'sample.txt' );
     const mockEvent: Event = <Event><any>{ 'target': { files: [mockFile] }};
-    
+
     let fileUploadComponent: FileUploadComponent;
     let fixture: ComponentFixture<FileUploadComponent>;
     let de: DebugElement;
     /* tslint:disable-next-line */
     let el: HTMLElement;
-    let http: HttpTestingController;
+    let afStorage: AngularFireStorage;
 
     beforeEach(() => {
         TestBed.configureTestingModule({
             declarations: [FileUploadComponent],
-            imports: [HttpClientTestingModule]
+            imports: [ CommonServiceModuleStub ],
+            providers: []
         });
 
         fixture = TestBed.createComponent(FileUploadComponent);
         fileUploadComponent = fixture.componentInstance;
 
-        http = TestBed.get( HttpTestingController );
+        afStorage = TestBed.get( AngularFireStorage );
 
         // query for the title <h1> by CSS element selector
         de = fixture.debugElement.query(By.css('h6'));
@@ -46,11 +48,12 @@ describe('FileUploadComponent', () => {
     });
 
     it( 'onUpload() send selected files data', () => {
+        const spy = spyOn( afStorage, 'ref' ).and.returnValue( new AngularFireStorageReferenceStub() );
+
         fileUploadComponent.onFileSelected( mockEvent );
-        
+
         fileUploadComponent.onUpload();
-        
-        http.expectOne( '' );
-        http.verify();
+
+        expect( afStorage.ref ).toHaveBeenCalled();
     });
 });
